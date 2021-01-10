@@ -1,0 +1,12 @@
+$transition300: all 0.3s;
+$transition700: all 0.7s;
+$magenta: #c500c2;
+
+@mixin bottomBorder {
+  border-bottom: 2px solid $magenta;
+}
+
+@mixin assistant800 {
+  font-family: 'Assistant', sans-serif;
+  font-weight: 800;
+}

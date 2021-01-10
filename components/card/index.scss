@@ -1,0 +1,59 @@
+.card {
+  align-items: center;
+  box-sizing: border-box;
+  color: white;
+  display: flex;
+  flex: 1;
+  min-width: calc(100% / 3);
+  max-width: calc(100% / 3);
+  width: calc(100% / 3);
+  &-content {
+    background-size: cover;
+    background-position: center top;
+    background-repeat: no-repeat;
+    border: 1px solid white;
+    margin-right: 4vw;
+    margin-left: 4vw;
+    margin-bottom: 6vw;
+    min-height: 25vw;
+    padding: 1vw;
+    position: relative;
+    width: 100%;
+  }
+  &-date {
+    font-size: 1.54vw;
+  }
+  &-day {
+    color: $magenta;
+    font-size: 1.34vw;
+  }
+  &-details {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    padding: 0.5vw 1vw;
+    box-sizing: border-box;
+    h1 {
+      @include assistant800;
+      font-size: 2vw;
+      line-height: 1;
+      margin-bottom: 0.5vw;
+      margin-top: 0;
+    }
+    p {
+      font-size: 1.2vw;
+      line-height: 1.2;
+      margin-top: 0.5vw;
+    }
+  }
+}
+
+.card-group {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
