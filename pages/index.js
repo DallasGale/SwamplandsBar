@@ -1,28 +1,51 @@
 import { useEffect, useState } from 'react'
+
 import Head from 'next/head'
-import Post from '../components/post'
 
-// const client = require("contentful").createClient({
-//   space: process.env.NEXT_PUBLIC_CONTENTFUL_SPACE_ID,
-//   accessToken: process.env.NEXT_PUBLIC_CONTENTFUL_ACCESS_TOKEN,
-// });
 
-function HomePage() {
-  // async function fetchEntries() {
-  //   const entries = await client.getEntries()
-  //   if (entries.items) return entries.items
-  //   console.log(`Error getting Entries for ${contentType.name}.`)
-  // }
+const App = () => {
 
-  const [posts, setPosts] = useState([])
+  const query = `
+  query getAllContent {
+    swampKitchenCollection {
+      items {
+        title
+        details
+        price
+      }
+    }
+    showsCollection {
+      items {
+        name
+        date
+        image {
+          url
+        }
+        description
+        day
+      }
+    }
+  }
+  
+  `
+  let [data, setData] = useState(null)
+  useEffect(() => {
+    window
+      .fetch(
+        `https://graphql.contentful.com/content/v1/spaces/${process.env.NEXT_PUBLIC_CONTENTFUL_SPACE_ID}?access_token=${process.env.NEXT_PUBLIC_CONTENTFUL_ACCESS_TOKEN}`,
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ query }),
+        }
+      )
+      .then((res) => res.json())
+      .then((json) => setData(json))
+  }, [])
 
-  // useEffect(() => {
-  //   async function getPosts() {
-  //     const allPosts = await fetchEntries()
-  //     setPosts([...allPosts])
-  //   }
-  //   getPosts()
-  // }, [])
+  if (!data) return <span>Loading</span>
 
   return (
     <>
@@ -31,22 +54,32 @@ function HomePage() {
         <link rel="stylesheet" href="https://css.zeit.sh/v1.css" type="text/css" />
       </Head>
 
-      <h1>Hi</h1>
+      <h2>Upcoming Shows</h2>
+      {data.data.showsCollection.items.map((i) => {
+        console.log('i', i)
+        return (
+          <div>
+            <h1>{i.name}</h1>
+            <h2>{i.date}</h2>
+            <h3>{i.description}</h3>
+            <h4>{i.day}</h4>
+            <img src={i.image.url} />
+          </div>
+        )
+      })}
 
-      {/* {posts.length > 0
-        ? posts.map((p) => (
-            <Post
-              alt={p.fields.alt}
-              date={p.fields.date}
-              key={p.fields.title}
-              image={p.fields.image}
-              title={p.fields.title}
-              url={p.fields.url}
-            />
-          ))
-        : null} */}
+      <h2>Swamp Kitchen</h2>
+      {data.data.swampKitchenCollection.items.map((i) => {
+        return (
+          <div>
+            <h1>{i.title}</h1>
+            <h2>{i.details}</h2>
+            <h3>${i.price}</h3>
+          </div>
+        )
+      })}
     </>
   )
 }
 
-export default HomePage
+export default App
