@@ -133,12 +133,12 @@ const App = () => {
   return (
     <ParallaxProvider>
       <Head>
-        <title>Swamplands Bar - </title>
+        <title>Swamplands Bar - 744 High Street Thornbury, VIC, Australia 3071</title>
       </Head>
       <header className={`header ${pageScrolled ? 'with-bg' : 'default'}`}>
         <div className="header-section logo" onClick={() => handleScrollTo('top', 0)}>
           <h1 className={`typography--display1 ${pageScrolled ? 'smaller' : 'default'}`}>
-            SWAMPLANDS BAR - 744 High Street Thornbury, VIC, Australia 3071
+            SWAMPLANDS BAR
           </h1>
         </div>
 
