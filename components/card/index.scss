@@ -4,29 +4,47 @@
   color: white;
   display: flex;
   flex: 1;
-  min-width: calc(100% / 3);
-  max-width: calc(100% / 3);
-  width: calc(100% / 3);
+  min-width: calc(100% / 4);
+  max-width: calc(100% / 4);
+  position: relative;
+  width: calc(100% / 4);
+  @include cardHover;
+
+  @include respond-to(widescreen-up) {
+    min-width: calc(100% / 4);
+    max-width: calc(100% / 4);
+    width: calc(100% / 4);
+  }
+
   &-content {
     background-size: cover;
     background-position: center top;
     background-repeat: no-repeat;
     border: 1px solid white;
     margin-right: 4vw;
-    margin-left: 4vw;
     margin-bottom: 6vw;
     min-height: 25vw;
     padding: 1vw;
     position: relative;
     width: 100%;
+    transition: $transition300;
+    &:hover {
+      border-color: $magenta;
+    }
+
+    @include respond-to(widescreen-up) {
+      min-height: 17vw;
+    }
   }
-  &-date {
-    font-size: 1.54vw;
-  }
+
   &-day {
-    color: $magenta;
+    color: white;
     font-size: 1.34vw;
+    @include respond-to(widescreen-up) {
+      font-size: 0.8vw;
+    }
   }
+
   &-details {
     display: flex;
     flex-direction: column;
@@ -37,18 +55,7 @@
     left: 0;
     padding: 0.5vw 1vw;
     box-sizing: border-box;
-    h1 {
-      @include assistant800;
-      font-size: 2vw;
-      line-height: 1;
-      margin-bottom: 0.5vw;
-      margin-top: 0;
-    }
-    p {
-      font-size: 1.2vw;
-      line-height: 1.2;
-      margin-top: 0.5vw;
-    }
+    z-index: 1;
   }
 }
 

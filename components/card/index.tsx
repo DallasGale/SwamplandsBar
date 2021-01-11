@@ -32,13 +32,14 @@ const Card: React.FC<Props> = ({ description, date, name, image }) => {
       <div className="card-content" style={{ backgroundImage: `url(${bgImage})` }}>
         <div className="card-details">
           <small className="card-day">{day}</small>
-          <small className="card-date">{formattedDate}</small>
-          <h1>{name}</h1>
+          <small className="typography__card--display2">{formattedDate}</small>
+          <div className="divider" />
+          <h1 className="typography__card--display1">{name}</h1>
 
           {description && (
             <>
               <div className="divider" />
-              <p>{description}</p>
+              <p className="typography__card--body">{description}</p>
             </>
           )}
         </div>

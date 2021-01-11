@@ -1,0 +1,152 @@
+.typography {
+  &--uppercase {
+    text-transform: uppercase;
+  }
+  &--display1 {
+    @include bottomBorder;
+    font-size: 3vw;
+    transition: $transition300;
+    @include respond-to(widescreen-up) {
+      font-size: 2vw;
+    }
+
+    &.smaller {
+      transition: $transition300;
+      font-size: 2vw;
+      @include respond-to(widescreen-up) {
+        font-size: 1vw;
+      }
+    }
+  }
+
+  &--display2 {
+    color: $magenta;
+    font-size: 2.4vw;
+    display: inline-flex;
+    position: relative;
+    text-transform: uppercase;
+
+    &:after {
+      background: black;
+      border-bottom: 1px solid white;
+      content: '';
+      height: 100%;
+      left: 0;
+      position: absolute;
+      width: 0;
+      transition: $transition700;
+      z-index: -1;
+    }
+    &.underline-text {
+      &:after {
+        transition: $transition700;
+        width: 100%;
+      }
+    }
+  }
+  &--display3 {
+    @include bottomBorder;
+    color: white;
+    font-size: 2.2vw;
+    font-weight: 400;
+    transition: $transition300;
+    @include respond-to(widescreen-up) {
+      font-size: 2vw;
+    }
+
+    &.smaller {
+      transition: $transition300;
+      font-size: 2vw;
+      @include respond-to(widescreen-up) {
+        font-size: 1vw;
+      }
+    }
+  }
+  &--display4 {
+    @include bottomBorder;
+    font-size: 2vw;
+    transition: $transition300;
+    @include respond-to(widescreen-up) {
+      font-size: 2vw;
+    }
+
+    &.smaller {
+      transition: $transition300;
+      font-size: 2vw;
+      @include respond-to(widescreen-up) {
+        font-size: 1vw;
+      }
+    }
+  }
+
+  &__nav {
+    &--links {
+      @include bottomBorder;
+      border-color: rgba(255, 255, 255, 0);
+      cursor: pointer;
+      font-size: 0.9vw;
+      list-style: none;
+      margin-right: 1.2vw;
+      padding-bottom: 0.3vw;
+      text-transform: uppercase;
+      transition: $transition300;
+
+      @include respond-to(widescreen-up) {
+        font-size: 0.7vw;
+      }
+      &:hover,
+      &.active {
+        color: white;
+        border-color: $magenta;
+        transition: $transition300;
+      }
+
+      &.inactive {
+        color: white;
+      }
+
+      &:before {
+        content: none;
+      }
+    }
+  }
+  &--body {
+    color: white;
+    font-size: 1vw;
+    font-weight: 400;
+  }
+
+  &__card {
+    &--body {
+      font-weight: 500;
+      font-size: 1.2vw;
+      line-height: 1.2;
+      margin-top: 0.5vw;
+
+      @include respond-to(widescreen-up) {
+        font-size: 0.8vw;
+      }
+    }
+    &--display1 {
+      @include assistant800;
+      font-size: 2vw;
+      line-height: 1;
+      margin-bottom: 0.5vw;
+      margin-top: 0.4vw;
+
+      @include respond-to(widescreen-up) {
+        font-size: 1.2vw;
+      }
+    }
+    &--display2 {
+      color: $magenta;
+      font-size: 1.54vw;
+      font-weight: 400;
+      text-transform: uppercase;
+      margin-bottom: 0.3vw;
+      @include respond-to(widescreen-up) {
+        font-size: 1vw;
+      }
+    }
+  }
+}

@@ -1,0 +1,67 @@
+/********************************************
+        BREAKPOINTS
+********************************************/
+
+$small-phone-end: '330px';
+$phone-end: '600px';
+$tablet-start: '601px';
+$tablet-end: '1015px';
+$desktop-start: '1016px';
+$desktop-end: '1750px';
+$widescreen-start: '1751px';
+$widescreen-end: '2400px';
+$widescreen-hd-start: '2401px';
+
+// * Based on mobile first approach.
+
+@mixin respond-to($media) {
+  @if $media == small-phone-up {
+    @media only screen and (min-width: $small-phone-end) {
+      @content;
+    }
+  }
+  // ? Tablet > <
+  @if $media == tablet-up {
+    @media only screen and (min-width: $tablet-start) {
+      @content;
+    }
+  }
+
+  @if $media == tablet-down {
+    @media only screen and (max-width: $phone-end) {
+      @content;
+    }
+  }
+
+  // ? Desktop > <
+  @if $media == desktop-up {
+    @media only screen and (min-width: $desktop-start) {
+      @content;
+    }
+  }
+
+  @if $media == desktop-down {
+    @media only screen and (max-width: $tablet-end) {
+      @content;
+    }
+  }
+
+  // ? Widescreen > <
+  @if $media == widescreen-up {
+    @media only screen and (min-width: $widescreen-start) {
+      @content;
+    }
+  }
+  @if $media == widescreen-down {
+    @media only screen and (max-width: $desktop-end) {
+      @content;
+    }
+  }
+
+  // ? Widescreen HD > <
+  @if $media == widescreen-hd-up {
+    @media only screen and (min-width: $widescreen-hd-start) {
+      @content;
+    }
+  }
+}

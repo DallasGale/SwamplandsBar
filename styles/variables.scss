@@ -10,3 +10,23 @@ $magenta: #c500c2;
   font-family: 'Assistant', sans-serif;
   font-weight: 800;
 }
+
+@mixin cardHover {
+  &:after {
+    background: $magenta;
+    content: '';
+    width: 60%;
+    height: 75%;
+    position: absolute;
+    right: 3vw;
+    bottom: 5vw;
+    transition: $transition300;
+    opacity: 0;
+    z-index: -2;
+  }
+  &:hover {
+    &:after {
+      opacity: 1;
+    }
+  }
+}

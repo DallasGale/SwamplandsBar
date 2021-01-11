@@ -1,4 +1,6 @@
 @import './variables.scss';
+@import './breakpoints.scss';
+@import './typography.scss';
 @import './components/card/index.scss';
 
 body {
@@ -38,6 +40,43 @@ body {
   }
 }
 
+@keyframes down {
+  0% {
+    transform: translateY(0);
+  }
+  49% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(10px);
+  }
+  55% {
+    transform: translateY(0);
+  }
+  60% {
+    transform: translateY(10px);
+  }
+  65% {
+    transform: translateY(0);
+  }
+
+  84% {
+    transform: translateY(0);
+  }
+  85% {
+    transform: translateY(10px);
+  }
+  90% {
+    transform: translateY(0);
+  }
+  95% {
+    transform: translateY(10px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
 // header
 .header {
   align-items: center;
@@ -53,8 +92,8 @@ body {
   top: 0;
   z-index: 1;
   &.with-bg {
-    background: rgba(0, 0, 0, 0.9);
-    padding: 0.25vw 1vw;
+    background: #191919;
+    padding: 0 1vw;
     transition: all 0.3s;
   }
   &-section {
@@ -69,16 +108,6 @@ body {
     flex: 1;
     justify-content: flex-start;
     margin-top: 0;
-    &-text {
-      @include bottomBorder;
-      font-size: 3vw;
-      transition: $transition300;
-
-      &.smaller {
-        transition: $transition300;
-        font-size: 2vw;
-      }
-    }
   }
 }
 
@@ -91,24 +120,6 @@ body {
   &-ul {
     display: inline-flex;
   }
-  &-li {
-    @include bottomBorder;
-    border-color: rgba(255, 255, 255, 0);
-    cursor: pointer;
-    font-size: 0.9vw;
-    list-style: none;
-    margin-right: 1.2vw;
-    text-transform: uppercase;
-    transition: $transition300;
-    &:hover {
-      border-color: $magenta;
-      transition: $transition300;
-    }
-
-    &:before {
-      content: none;
-    }
-  }
 }
 
 // hero
@@ -119,30 +130,86 @@ body {
   display: block;
   width: 100%;
   height: 100vh;
-  // transition: $transition700;
   opacity: 0.4;
   z-index: 1;
-  &.filtered {
-    // filter: hue-rotate(-90deg);
-    // transition: $transition700;
-    // transform: translateY(310vw);
-  }
 }
 
-// Shows
+// UI
+.down {
+  animation: down 3s ease-in-out infinite;
+  background: url('/down.svg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  bottom: 5vw;
+  border: none;
+  height: 3vw;
+  display: block;
+  width: 3vw;
+  margin: 0 auto;
+  position: absolute;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  &:hover {
+    animation: none;
+  }
+  button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    height: 100%;
+
+    text-indent: -9999px;
+  }
+}
 
 // Kitchen
 .section {
   padding: 4vw 0;
   position: relative;
   z-index: 0;
+  &--swamp-kitchen,
+  &--shows {
+    background: rgba(0, 0, 0, 0.6);
+  }
+  &--contact {
+    max-width: 80%;
+    margin: 0 auto;
+    a {
+      color: $magenta;
+      font-weight: 600;
+    }
+    address {
+      margin-top: 1vw;
+      padding-left: 3vw;
+      position: relative;
+      &:before {
+        background: url('/pin.svg');
+        background-size: cover;
+        content: '';
+        position: absolute;
+        height: 3vw;
+        width: 2vw;
+        left: 0;
+        top: 0;
+      }
+    }
+  }
+}
+
+.section-wrapper {
+  background: rgba(0, 0, 0, 0.8);
+  position: relative;
+  z-index: 1;
+  > h1 {
+    margin-left: 4vw;
+  }
 }
 
 .section-content {
   max-width: 90%;
   margin: 0 auto;
-  position: relative;
-  z-index: 0;
 }
 
 .section-hero {
@@ -150,39 +217,14 @@ body {
   background-position: bottom center;
   background-attachment: fixed;
   display: block;
-  opacity: 0.8;
+  opacity: 0.3;
   position: relative;
   top: 0;
-  width: 100%;
   height: 60vh;
-  overflow: visible;
-  z-index: -1;
-}
-.section-title {
-  color: $magenta;
-  font-size: 2.4vw;
-  display: inline-flex;
-  margin-left: 4vw;
-  padding-left: 1vw;
-  padding-right: 1vw;
-  position: relative;
-  text-transform: uppercase;
-
-  &:after {
-    background: white;
-    content: '';
-    height: 100%;
-    left: 0;
-    position: absolute;
-    width: 0;
-    transition: $transition700;
-    z-index: -1;
-  }
-  &.underline-text {
-    &:after {
-      transition: $transition700;
-      width: 100%;
-    }
+  width: 100%;
+  z-index: 2;
+  @include respond-to(widescreen-up) {
+    height: 40vh;
   }
 }
 
@@ -190,8 +232,43 @@ body {
 .divider {
   background: white;
   height: 1px;
-  min-width: 12vw;
+  min-width: 10vw;
   opacity: 0.5;
+}
+
+// gallery {
+.gallery {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.gallery-item {
+  @include cardHover;
+  display: flex;
+  flex: 1;
+  max-width: calc(100% / 3 - 4vw);
+  min-width: calc(100% / 3 - 4vw);
+
+  padding: 2vw;
+  position: relative;
+  &:after {
+    right: 1vw;
+    // height: 16vw;
+    bottom: 1vw;
+    width: 19vw;
+    @include respond-to(widescreen-up) {
+      width: 14vw;
+    }
+  }
+  img {
+    border: 1px solid black;
+    box-sizing: border-box;
+    width: 100%;
+    &:hover {
+      border-color: $magenta;
+    }
+  }
 }
 
 // taglines
@@ -213,6 +290,12 @@ body {
     background-repeat: no-repeat;
     position: absolute;
     left: -5vw;
+
+    @include respond-to(widescreen-up) {
+      width: 3vw;
+      height: 2vw;
+      left: -4vw;
+    }
   }
 }
 
@@ -220,21 +303,80 @@ body {
   color: white;
   font-weight: 400;
   font-size: 1.154vw;
+
+  @include respond-to(widescreen-up) {
+    font-size: 0.9vw;
+  }
 }
 .tag-line--bottom {
   color: $magenta;
   font-size: 1.4vw;
+  @include respond-to(widescreen-up) {
+    font-size: 1.1vw;
+  }
 }
 
 // Swamp Kithcen
+
 .menu {
   color: white;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  max-width: 80vw;
+  margin: 0 auto;
+  section {
+    width: 100%;
+  }
+  h1 {
+    margin-left: 2vw;
+  }
   &-item {
+    color: white;
+    border-radius: 10px;
+    box-sizing: border-box;
+    display: flex;
     flex: 1;
     max-width: 50%;
     min-width: 50%;
+    padding: 0 2vw;
+    position: relative;
+    transition: $transition300;
+
+    h1 {
+      margin-top: 0;
+    }
+    p {
+      margin-bottom: 3vw;
+    }
+
+    &:hover {
+      background: rgb(26, 26, 26);
+      transition: $transition300;
+      h2,
+      h3 {
+        color: $magenta;
+      }
+    }
+
+    &--details {
+      max-width: 70%;
+      min-width: 70%;
+    }
+    &--price {
+      max-width: 30%;
+      min-width: 30%;
+      justify-content: flex-end;
+      display: flex;
+      text-align: right;
+      h3 {
+        font-size: 1.5vw;
+        text-align: right;
+
+        @include respond-to(widescreen-up) {
+          font-size: 1vw;
+        }
+      }
+    }
   }
 }
