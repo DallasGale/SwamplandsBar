@@ -145,18 +145,27 @@ body {
       font-weight: 600;
     }
     address {
-      margin-top: 1vw;
-      padding-left: 3vw;
+      margin-top: 1vh;
+      padding-left: 3vh;
       position: relative;
+      @include respond-to(desktop-up) {
+        margin-top: 1vw;
+        padding-left: 3vw;
+      }
       &:before {
         background: url('/pin.svg');
         background-size: cover;
         content: '';
         position: absolute;
-        height: 3vw;
-        width: 2vw;
+        height: 3vh;
+        width: 2vh;
         left: 0;
         top: 0;
+
+        @include respond-to(desktop-up) {
+          height: 3vw;
+          width: 2vw;
+        }
       }
     }
   }

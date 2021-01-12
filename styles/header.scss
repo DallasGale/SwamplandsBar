@@ -19,11 +19,11 @@
     padding: 0.5vw 2vw;
   }
   &.with-bg {
-    background: #191919;
+    background: black;
     transition: all 0.3s;
 
     @include respond-to(desktop-up) {
-      padding: 0 1vw;
+      padding: 0 1vw 1vw 1vw;
     }
   }
   &-section {
@@ -52,14 +52,16 @@
   flex-direction: column;
   flex: 1;
   justify-content: center;
-  position: relative;
+  position: absolute;
+  left: 10vh;
+  top: 2vh;
   text-align: center;
   text-transform: uppercase;
-
   order: 1;
   @include respond-to(desktop-up) {
+    left: auto;
+    right: auto;
     order: 2;
-    position: absolute;
   }
   &:before {
     background: url('/happy-hour.png');

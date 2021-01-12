@@ -150,6 +150,16 @@ const App = () => {
           </div>
         </div>
 
+        <div className="social-mobile">
+          <ul className="social-mobile--ul">
+            <li className="typography__nav--links social social-fb">
+              <a href="https://www.facebook.com/swamplandsbar">FB</a>
+            </li>
+            <li className="typography__nav--links social social-in">
+              <a href="https://www.instagram.com/swamplandsbar">IN</a>
+            </li>
+          </ul>
+        </div>
         <nav className="header-section nav">
           <ul className="nav-ul">
             <li
