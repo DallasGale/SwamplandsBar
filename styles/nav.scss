@@ -1,0 +1,13 @@
+// nav
+.nav {
+  display: none;
+  @include respond-to(desktop-up) {
+    display: flex;
+    flex: 1;
+    justify-content: flex-end;
+    width: 50vw;
+    &-ul {
+      display: inline-flex;
+    }
+  }
+}

@@ -4,15 +4,23 @@
   }
   &--display1 {
     @include bottomBorder;
-    font-size: 3vw;
+    font-size: 10vw;
     transition: $transition300;
+    @include respond-to(desktop-up) {
+      font-size: 3vw;
+    }
+
     @include respond-to(widescreen-up) {
       font-size: 2vw;
     }
 
     &.smaller {
+      font-size: 5vw;
       transition: $transition300;
-      font-size: 2vw;
+
+      @include respond-to(desktop-up) {
+        font-size: 2vw;
+      }
       @include respond-to(widescreen-up) {
         font-size: 1vw;
       }
@@ -21,10 +29,14 @@
 
   &--display2 {
     color: $magenta;
-    font-size: 2.4vw;
+    font-size: 5.4vw;
     display: inline-flex;
     position: relative;
     text-transform: uppercase;
+
+    @include respond-to(desktop-up) {
+      font-size: 2.4vw;
+    }
 
     &:after {
       background: black;
@@ -119,9 +131,14 @@
   &__card {
     &--body {
       font-weight: 500;
-      font-size: 1.2vw;
+      font-size: 3.2vh;
       line-height: 1.2;
       margin-top: 0.5vw;
+      margin-bottom: 0;
+
+      @include respond-to(desktop-up) {
+        font-size: 1.2vw;
+      }
 
       @include respond-to(widescreen-up) {
         font-size: 0.8vw;
@@ -129,10 +146,14 @@
     }
     &--display1 {
       @include assistant800;
-      font-size: 2vw;
+      font-size: 4vh;
       line-height: 1;
       margin-bottom: 0.5vw;
       margin-top: 0.4vw;
+
+      @include respond-to(desktop-up) {
+        font-size: 2vw;
+      }
 
       @include respond-to(widescreen-up) {
         font-size: 1.2vw;
@@ -140,10 +161,15 @@
     }
     &--display2 {
       color: $magenta;
-      font-size: 1.54vw;
+      font-size: 3.54vh;
       font-weight: 400;
       text-transform: uppercase;
       margin-bottom: 0.3vw;
+
+      @include respond-to(desktop-up) {
+        font-size: 1.54vw;
+      }
+
       @include respond-to(widescreen-up) {
         font-size: 1vw;
       }

@@ -4,12 +4,18 @@
   color: white;
   display: flex;
   flex: 1;
-  min-width: calc(100% / 4);
-  max-width: calc(100% / 4);
+
+  min-width: 100%;
+  max-width: 100%;
+  width: 100%;
   position: relative;
-  width: calc(100% / 4);
   @include cardHover;
 
+  @include respond-to(desktop-up) {
+    min-width: calc(100% / 4);
+    max-width: calc(100% / 4);
+    width: calc(100% / 4);
+  }
   @include respond-to(widescreen-up) {
     min-width: calc(100% / 4);
     max-width: calc(100% / 4);
@@ -23,8 +29,7 @@
     border: 1px solid white;
     margin-right: 4vw;
     margin-bottom: 6vw;
-    min-height: 25vw;
-    padding: 1vw;
+    min-height: 50vh;
     position: relative;
     width: 100%;
     transition: $transition300;
@@ -32,6 +37,10 @@
       border-color: $magenta;
     }
 
+    @include respond-to(desktop-up) {
+      min-height: 25vw;
+      padding: 1vw;
+    }
     @include respond-to(widescreen-up) {
       min-height: 17vw;
     }
@@ -39,7 +48,11 @@
 
   &-day {
     color: white;
-    font-size: 1.34vw;
+    font-size: 3.34vh;
+
+    @include respond-to(desktop-up) {
+      font-size: 1.34vw;
+    }
     @include respond-to(widescreen-up) {
       font-size: 0.8vw;
     }
@@ -53,9 +66,13 @@
     position: absolute;
     bottom: 0;
     left: 0;
-    padding: 0.5vw 1vw;
+    padding: 2vh;
     box-sizing: border-box;
     z-index: 1;
+
+    @include respond-to(desktop-up) {
+      padding: 0.5vw 1vw;
+    }
   }
 }
 

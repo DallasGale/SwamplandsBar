@@ -1,0 +1,106 @@
+// header
+.header {
+  align-items: center;
+  box-sizing: border-box;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: fixed;
+  width: 100%;
+  transition: all 0.2s;
+  left: 0;
+  padding: 0.5vw 2vw;
+  top: 0;
+  z-index: 1;
+
+  @include respond-to(desktop-up) {
+    flex-direction: row;
+  }
+  &.with-bg {
+    background: #191919;
+    padding: 0 1vw;
+    transition: all 0.3s;
+  }
+  &-section {
+    align-items: center;
+    display: flex;
+    order: 2;
+    @include respond-to(desktop-up) {
+      min-width: calc(100% / 2);
+      max-width: calc(100% / 2);
+      width: calc(100% / 2);
+      order: 1;
+    }
+  }
+  .logo {
+    display: flex;
+    flex: 1;
+    justify-content: flex-start;
+    margin-top: 0;
+  }
+}
+
+// taglines
+.tag-line {
+  display: flex;
+  font-size: 1.5vw;
+  flex-direction: column;
+  flex: 1;
+  justify-content: center;
+  position: relative;
+  text-align: center;
+  text-transform: uppercase;
+
+  order: 1;
+  @include respond-to(desktop-up) {
+    order: 2;
+    position: absolute;
+  }
+  &:before {
+    background: url('/happy-hour.png');
+    content: '';
+    background-size: 100%;
+    background-repeat: no-repeat;
+    position: absolute;
+    left: -7vh;
+    width: 5vh;
+    height: 4vh;
+
+    @include respond-to(desktop-up) {
+      width: 4vw;
+      height: 3vw;
+      left: -5vw;
+    }
+    @include respond-to(widescreen-up) {
+      width: 3vw;
+      height: 2vw;
+      left: -4vw;
+    }
+  }
+}
+
+.tag-line--top {
+  color: white;
+  font-weight: 400;
+  font-size: 2.154vh;
+
+  @include respond-to(desktop-up) {
+    font-size: 1.154vw;
+  }
+
+  @include respond-to(widescreen-up) {
+    font-size: 0.9vw;
+  }
+}
+.tag-line--bottom {
+  color: $magenta;
+  font-size: 2.6vh;
+
+  @include respond-to(desktop-up) {
+    font-size: 1.4vw;
+  }
+  @include respond-to(widescreen-up) {
+    font-size: 1.1vw;
+  }
+}
