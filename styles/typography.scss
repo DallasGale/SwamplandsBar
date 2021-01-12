@@ -131,7 +131,7 @@
   &__card {
     &--body {
       font-weight: 500;
-      font-size: 3.2vh;
+      font-size: 2.5vh;
       line-height: 1.2;
       margin-top: 0.5vw;
       margin-bottom: 0;
@@ -172,6 +172,13 @@
 
       @include respond-to(widescreen-up) {
         font-size: 1vw;
+      }
+    }
+    &--display3 {
+      font-size: 3.2vh;
+
+      @include respond-to(desktop-up) {
+        font-size: 1.54vw;
       }
     }
   }

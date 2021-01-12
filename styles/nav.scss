@@ -11,3 +11,33 @@
     }
   }
 }
+
+.social {
+  background-repeat: no-repeat !important;
+  height: 1vw;
+  text-indent: -9999px;
+  border-bottom: none;
+  transition: none !important;
+  a {
+    display: block;
+    position: relative;
+  }
+  &-fb {
+    background: url('/fb.svg');
+    background-size: 1.3vw;
+    background-position: 0 0;
+    width: 0.6vw;
+    &:hover {
+      background-position: -0.7vw 0;
+    }
+  }
+  &-in {
+    background: url('/insta.svg');
+    background-size: 2.5vw;
+    background-position: 0 0;
+    width: 1.3vw;
+    &:hover {
+      background-position: -1.3vw 0;
+    }
+  }
+}

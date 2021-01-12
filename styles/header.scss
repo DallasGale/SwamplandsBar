@@ -10,17 +10,21 @@
   width: 100%;
   transition: all 0.2s;
   left: 0;
-  padding: 0.5vw 2vw;
+  padding: 2vh;
   top: 0;
   z-index: 1;
 
   @include respond-to(desktop-up) {
     flex-direction: row;
+    padding: 0.5vw 2vw;
   }
   &.with-bg {
     background: #191919;
-    padding: 0 1vw;
     transition: all 0.3s;
+
+    @include respond-to(desktop-up) {
+      padding: 0 1vw;
+    }
   }
   &-section {
     align-items: center;
