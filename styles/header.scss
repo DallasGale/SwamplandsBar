@@ -4,6 +4,7 @@
   box-sizing: border-box;
   color: white;
   display: flex;
+  height: auto;
   flex-direction: column;
   justify-content: center;
   position: fixed;
@@ -15,15 +16,20 @@
   z-index: 1;
 
   @include respond-to(desktop-up) {
+    align-items: flex-start;
     flex-direction: row;
     padding: 0.5vw 2vw;
+  }
+
+  @include respond-to(netbook-up) {
+    align-items: center;
   }
   &.with-bg {
     background: black;
     transition: all 0.3s;
 
     @include respond-to(desktop-up) {
-      padding: 0 1vw 1vw 1vw;
+      padding: 0 1vw 3vw 1vw;
     }
   }
   &-section {
@@ -38,6 +44,7 @@
     }
   }
   .logo {
+    cursor: pointer;
     display: flex;
     flex: 1;
     justify-content: flex-start;
@@ -53,7 +60,10 @@
   flex: 1;
   justify-content: center;
   position: absolute;
-  left: 10vh;
+  left: 0;
+  right: 0;
+  max-width: 40vh;
+  margin: 0 auto;
   top: 2vh;
   text-align: center;
   text-transform: uppercase;
@@ -62,6 +72,7 @@
     left: auto;
     right: auto;
     order: 2;
+    position: absolute;
   }
   &:before {
     background: url('/happy-hour.png');
@@ -69,7 +80,7 @@
     background-size: 100%;
     background-repeat: no-repeat;
     position: absolute;
-    left: -7vh;
+    left: -3vh;
     width: 5vh;
     height: 4vh;
 
@@ -89,7 +100,7 @@
 .tag-line--top {
   color: white;
   font-weight: 400;
-  font-size: 2.154vh;
+  font-size: 2vh;
 
   @include respond-to(desktop-up) {
     font-size: 1.154vw;
@@ -101,12 +112,12 @@
 }
 .tag-line--bottom {
   color: $magenta;
-  font-size: 2.6vh;
+  font-size: 2vh;
 
   @include respond-to(desktop-up) {
-    font-size: 1.4vw;
+    font-size: 1.2vw;
   }
   @include respond-to(widescreen-up) {
-    font-size: 1.1vw;
+    font-size: 1vw;
   }
 }

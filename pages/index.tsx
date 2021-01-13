@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { ParallaxProvider, Parallax } from 'react-scroll-parallax'
 import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
+import Modal from 'react-modal'
 
 import { handleScrollTo } from '../helpers'
 
@@ -13,6 +14,17 @@ const variants = {
   hidden: { opacity: 0, x: -100 },
 }
 
+const customStyles = {
+  content: {
+    top: '50%',
+    left: '50%',
+    right: 'auto',
+    bottom: 'auto',
+    marginRight: '-50%',
+    transform: 'translate(-50%, -50%)',
+    zIndex: 100,
+  },
+}
 // Components
 import Card from '../components/card'
 
@@ -40,7 +52,6 @@ const App = () => {
     query getAllContent {
       header(id: "6fOI5PfCdJEicQ4Wx7iEtp") {
         taglineTop
-        taglineBottom
       }
       heroCollection {
         items {
@@ -72,6 +83,7 @@ const App = () => {
           price
           cocktail
           swamplandSundays
+          happyHourSpecials
         }
       }
       swampKitchenCollection {
@@ -128,6 +140,8 @@ const App = () => {
     }
   }, [])
 
+  const [showModal, setShowModal] = useState(false)
+
   if (!data) return <span>Loading</span>
 
   return (
@@ -144,47 +158,48 @@ const App = () => {
 
         <div className="tag-line">
           <div className="tag-line--top">{data.data.header.taglineTop}</div>
-          <div className="divider" />
+          {/* <div className="divider" /> */}
           <div className="tag-line--bottom">
-            <strong>{data.data.header.taglineBottom}</strong>
+            <strong>
+              Happy Hour 5pm-7pm weekdays.
+              <br />
+              6pm-8pm Sat, 4pm-6pm Sun
+            </strong>
           </div>
         </div>
 
-        <div className="social-mobile">
-          <ul className="social-mobile--ul">
-            <li className="typography__nav--links social social-fb">
-              <a href="https://www.facebook.com/swamplandsbar">FB</a>
-            </li>
-            <li className="typography__nav--links social social-in">
-              <a href="https://www.instagram.com/swamplandsbar">IN</a>
-            </li>
-          </ul>
-        </div>
         <nav className="header-section nav">
           <ul className="nav-ul">
             <li
               onClick={() => handleScrollTo('upcoming-shows', 0)}
-              className={`typography__nav--links ${showsInView ? 'active' : 'inactive'}`}
+              className={`mb-hide  typography__nav--links ${showsInView ? 'active' : 'inactive'}`}
             >
               {data.data.upcomingShowsHeroCollection.items[0].sectionTitle}
             </li>
             <li
               onClick={() => handleScrollTo('swamp-kitchen', 0)}
-              className={`typography__nav--links ${kitchenInView ? 'active' : 'inactive'}`}
+              className={`mb-hide  typography__nav--links ${kitchenInView ? 'active' : 'inactive'}`}
             >
               SWAMP KITCHEN
             </li>
             <li
               onClick={() => handleScrollTo('contact', 300)}
-              className={`typography__nav--links ${contactInView ? 'active' : 'inactive'}`}
+              className={`mb-hide  typography__nav--links ${contactInView ? 'active' : 'inactive'}`}
             >
               CONTACT
             </li>
-            <li className="typography__nav--links social social-fb">
-              <a href="https://www.facebook.com/swamplandsbar">FB</a>
+            <li onClick={() => setShowModal(true)} className="typography__nav--links">
+              SUBSCRIBE
             </li>
-            <li className="typography__nav--links social social-in">
-              <a href="https://www.instagram.com/swamplandsbar">IN</a>
+            <li className="typography__nav--links social--list-item">
+              <ul>
+                <li className="typography__nav--links social social-fb">
+                  <a href="https://www.facebook.com/swamplandsbar">FB</a>
+                </li>
+                <li className="typography__nav--links social social-in">
+                  <a href="https://www.instagram.com/swamplandsbar">IN</a>
+                </li>
+              </ul>
             </li>
           </ul>
         </nav>
@@ -286,11 +301,11 @@ const App = () => {
                 animate={drinks1InView ? 'visible' : 'hidden'}
                 transition={{ ease: 'easeInOut', duration: 0.5 }}
               >
-                Swamplands Happy Hour Specials
+                Swampland Happy Hour Specials
               </motion.h1>
               <div className="card-group">
                 {data.data.drinksCollection.items
-                  .filter((i) => !i.cocktailx)
+                  .filter((i) => i.happyHourSpecials)
                   .map((i) => {
                     return (
                       <div className="menu-item">
@@ -318,11 +333,11 @@ const App = () => {
                 animate={drinks2InView ? 'visible' : 'hidden'}
                 transition={{ ease: 'easeInOut', duration: 0.5 }}
               >
-                Cocktails
+                Swampland Sundays
               </motion.h1>
               <div className="card-group">
                 {data.data.drinksCollection.items
-                  .filter((i) => i.cocktail)
+                  .filter((i) => i.swamplandSundays)
                   .map((i) => {
                     return (
                       <div className="menu-item">
@@ -350,7 +365,7 @@ const App = () => {
                 animate={drinks3InView ? 'visible' : 'hidden'}
                 transition={{ ease: 'easeInOut', duration: 0.5 }}
               >
-                Swampland Sundays
+                Happy Hour Cocktails
               </motion.h1>
               <div className="card-group">
                 {data.data.drinksCollection.items
@@ -402,6 +417,17 @@ const App = () => {
           ></iframe>
         </div>
       </section>
+      <Modal style={customStyles} isOpen={showModal} contentLabel="Example Modal">
+        <button onClick={() => setShowModal(false)}>close</button>
+        <div>I am a modal</div>
+        <form>
+          <input />
+          <button>tab navigation</button>
+          <button>stays</button>
+          <button>inside</button>
+          <button>the modal</button>
+        </form>
+      </Modal>
     </ParallaxProvider>
   )
 }

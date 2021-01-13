@@ -1,16 +1,41 @@
 // nav
 .nav {
-  display: none;
+  // display: none;
+  // @include respond-to(desktop-up) {
+
+  display: flex;
+  flex: 1;
+  justify-content: flex-end;
+  width: 50vw;
+
+  position: absolute;
+  top: 8px;
+  right: 0;
+
   @include respond-to(desktop-up) {
+    position: relative;
+  }
+  &-ul {
+    align-items: flex-end;
     display: flex;
-    flex: 1;
-    justify-content: flex-end;
-    width: 50vw;
-    &-ul {
+    flex-direction: column;
+    padding-left: 0;
+
+    @include respond-to(netbook-up) {
+      position: relative;
+      left: 0;
       display: inline-flex;
+      flex-direction: row;
+    }
+
+    li {
+      @include respond-to(netbook-up) {
+        order: 0;
+      }
     }
   }
 }
+// }
 
 .social {
   background-repeat: no-repeat !important;
@@ -18,23 +43,39 @@
   text-indent: -9999px;
   border-bottom: none;
   transition: none !important;
-  @include respond-to(desktop-up) {
-    height: 1vw;
-  }
   a {
     display: block;
     position: relative;
+  }
+  &--list-item {
+    margin-bottom: 12px;
+    margin-top: 12px;
+    order: -1;
+    ul {
+      align-items: center;
+      justify-content: center;
+      display: inline-flex;
+      padding-left: 0;
+    }
+    @include respond-to(netbook-up) {
+      order: initial;
+
+      margin-bottom: 0;
+      margin-top: 0;
+    }
   }
   &-fb {
     background: url('/fb.svg');
     background-size: 20px;
     background-position: 0 0;
     width: 10px;
-    @include respond-to(desktop-up) {
+
+    @include respond-to(netbook-up) {
+      background-position: 0 7px;
       background-size: 1.3vw;
       width: 0.6vw;
       &:hover {
-        background-position: -0.7vw 0;
+        background-position: -0.7vw 7px;
       }
     }
   }
@@ -45,30 +86,15 @@
     width: 20px;
     margin-left: 20px;
 
-    @include respond-to(desktop-up) {
+    @include respond-to(netbook-up) {
+      order: initial;
       background-size: 2.5vw;
+      background-position: 0 7px;
       margin-left: 0;
       width: 1.3vw;
       &:hover {
-        background-position: -1.3vw 0;
+        background-position: -1.3vw 7px;
       }
-    }
-  }
-  &-mobile {
-    display: block;
-    width: 20vw;
-    position: absolute;
-    right: 0;
-    top: 0;
-    @include respond-to(desktop-up) {
-      display: none;
-    }
-
-    &--ul {
-      align-items: flex-end;
-      display: flex;
-      justify-content: flex-end;
-      padding-left: 0;
     }
   }
 }

@@ -7,7 +7,7 @@
     font-size: 10vw;
     transition: $transition300;
     margin-bottom: 0;
-    margin-top: 6vh;
+    margin-top: 8vh;
     @include respond-to(desktop-up) {
       font-size: 3vw;
       margin-top: 0;
@@ -99,7 +99,7 @@
       @include bottomBorder;
       border-color: rgba(255, 255, 255, 0);
       cursor: pointer;
-      font-size: 1.7vh;
+      font-size: 13px;
       list-style: none;
       margin-right: 1.2vw;
       padding-bottom: 0.3vw;

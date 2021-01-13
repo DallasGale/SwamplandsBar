@@ -9,9 +9,17 @@ body {
   @include assistant800;
   background: black;
   max-width: 100%;
+  width: 100%;
+  margin: 0;
   padding: 0;
 }
 
+.mb-hide {
+  display: none;
+  @include respond-to(desktop-up) {
+    display: flex;
+  }
+}
 @keyframes colorFade {
   0% {
     border-color: $magenta;
@@ -87,6 +95,7 @@ body {
   display: block;
   width: 100%;
   height: 100vh;
+  margin-top: -10vh;
   opacity: 0.4;
   z-index: 1;
 }
@@ -323,4 +332,9 @@ body {
       }
     }
   }
+}
+
+.ReactModal__Overlay {
+  background: rgb(0 0 0 / 75%);
+  z-index: 100;
 }
