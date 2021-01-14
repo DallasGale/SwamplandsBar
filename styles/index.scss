@@ -224,19 +224,26 @@ body {
 
 // gallery {
 .gallery {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
+  display: block;
+
+  @include respond-to(tablet-up) {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
 }
 
 .gallery-item {
   @include cardHover;
-  display: flex;
-  flex: 1;
-  max-width: calc(100% / 2 - 4vw);
-  min-width: calc(100% / 2 - 4vw);
+  width: 100%;
   padding: 2vw;
   position: relative;
+  @include respond-to(tablet-up) {
+    display: flex;
+    flex: 1;
+    max-width: calc(100% / 2 - 4vw);
+    min-width: calc(100% / 2 - 4vw);
+  }
 
   @include respond-to(desktop-up) {
     max-width: calc(100% / 3 - 4vw);
