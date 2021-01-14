@@ -254,6 +254,7 @@ body {
     border: 1px solid black;
     box-sizing: border-box;
     width: 100%;
+    height: auto;
     &:hover {
       border-color: $magenta;
     }
@@ -335,6 +336,63 @@ body {
 }
 
 .ReactModal__Overlay {
-  background: rgb(0 0 0 / 75%);
   z-index: 100;
+}
+
+.ReactModal__Overlay.ReactModal__Overlay--after-open {
+  background-color: rgba(19, 19, 19, 0.9) !important;
+  color: white;
+}
+
+.ReactModal__Content.ReactModal__Content--after-open {
+  background-color: rgba(0, 0, 0, 1) !important;
+  border-radius: 24px !important;
+  border: none !important;
+  padding: 30px !important;
+  width: 60%;
+}
+
+.mc-field-group {
+  display: flex;
+  flex-direction: column;
+}
+.close-btn {
+  background: url('/close.svg');
+  background-position: center center;
+  background-size: cover;
+  height: 40px;
+  width: 40px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  text-indent: -9999px;
+  right: 20px;
+  position: absolute;
+}
+
+#mc_embed_signup_scroll {
+  h2 {
+    font-size: 5vh;
+  }
+  input {
+    height: 5vh;
+    border: none;
+    background: white;
+    color: white;
+    border: 1px solid #acacac;
+    margin-bottom: 10px;
+  }
+}
+
+input#mc-embedded-subscribe {
+  background: $magenta;
+  @include assistant800;
+  border: none;
+  width: 100%;
+  display: flex;
+  height: 60px;
+  align-items: center;
+  justify-content: center;
+  margin-top: 10px;
+  font-size: 20px;
 }

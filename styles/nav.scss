@@ -16,15 +16,30 @@
     position: relative;
   }
   &-ul {
-    align-items: flex-end;
+    align-items: center;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     padding-left: 0;
+    height: 70px;
+    margin-top: 0;
+    justify-content: space-between;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background: black;
+    margin-bottom: 0;
 
     @include respond-to(netbook-up) {
+      align-items: flex-end;
+      background: none;
+      flex-direction: column;
+      height: auto;
       position: relative;
       left: 0;
+      justify-content: center;
       display: inline-flex;
+      margin-top: auto;
+      width: auto;
       flex-direction: row;
     }
 
@@ -43,6 +58,11 @@
   text-indent: -9999px;
   border-bottom: none;
   transition: none !important;
+
+  @include respond-to(netbook-up) {
+    height: 15px;
+    margin-right: 0;
+  }
   a {
     display: block;
     position: relative;
@@ -51,6 +71,12 @@
     margin-bottom: 12px;
     margin-top: 12px;
     order: -1;
+    padding-left: 20px;
+
+    &:hover,
+    &.active {
+      border-color: transparent;
+    }
     ul {
       align-items: center;
       justify-content: center;
@@ -59,9 +85,10 @@
     }
     @include respond-to(netbook-up) {
       order: initial;
-
+      margin-right: 0;
       margin-bottom: 0;
       margin-top: 0;
+      padding-left: 0;
     }
   }
   &-fb {
@@ -71,12 +98,12 @@
     width: 10px;
 
     @include respond-to(netbook-up) {
-      background-position: 0 7px;
-      background-size: 1.3vw;
-      width: 0.6vw;
-      &:hover {
-        background-position: -0.7vw 7px;
-      }
+      //   background-position: 0 7px;
+      //   background-size: 1vw;
+      //   width: 0.6vw;
+      //   &:hover {
+      //     background-position: -0.7vw 7px;
+      //   }
     }
   }
   &-in {
@@ -85,16 +112,5 @@
     background-position: 0 0;
     width: 20px;
     margin-left: 20px;
-
-    @include respond-to(netbook-up) {
-      order: initial;
-      background-size: 2.5vw;
-      background-position: 0 7px;
-      margin-left: 0;
-      width: 1.3vw;
-      &:hover {
-        background-position: -1.3vw 7px;
-      }
-    }
   }
 }

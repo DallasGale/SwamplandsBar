@@ -142,6 +142,12 @@ const App = () => {
 
   const [showModal, setShowModal] = useState(false)
 
+  // Subscribe variables
+  const [email, setEmail] = useState('')
+  const [fname, setFname] = useState('')
+  const [lname, setLname] = useState('')
+  const [zipcode, setZipcode] = useState('')
+
   if (!data) return <span>Loading</span>
 
   return (
@@ -414,19 +420,97 @@ const App = () => {
             allowFullScreen={true}
             aria-hidden="false"
             tabIndex={0}
-          ></iframe>
+          />
         </div>
       </section>
       <Modal style={customStyles} isOpen={showModal} contentLabel="Example Modal">
-        <button onClick={() => setShowModal(false)}>close</button>
-        <div>I am a modal</div>
-        <form>
-          <input />
-          <button>tab navigation</button>
-          <button>stays</button>
-          <button>inside</button>
-          <button>the modal</button>
-        </form>
+        <button className="close-btn" onClick={() => setShowModal(false)}>
+          close
+        </button>
+        <div id="mc_embed_signup">
+          <form
+            action="https://mikkimichelle.us2.list-manage.com/subscribe/post?u=1eaf458ac88c41547a8db6977&amp;id=f26da82daa"
+            method="post"
+            id="mc-embedded-subscribe-form"
+            name="mc-embedded-subscribe-form"
+            className="validate"
+            target="_blank"
+            noValidate
+          >
+            <div id="mc_embed_signup_scroll">
+              <h2>Subscribe</h2>
+              <div className="indicates-required">
+                <span className="asterisk">*</span> indicates required
+              </div>
+
+              <div className="mc-field-group">
+                <label htmlFor="mce-EMAIL">
+                  Email Address <span className="asterisk">*</span>
+                </label>
+                <input
+                  type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  name="EMAIL"
+                  className="required email"
+                  id="mce-EMAIL"
+                />
+              </div>
+
+              <div className="mc-field-group">
+                <label htmlFor="mce-FNAME">First Name </label>
+                <input
+                  type="text"
+                  value={fname}
+                  onChange={(e) => setFname(e.target.value)}
+                  name="FNAME"
+                  className=""
+                  id="mce-FNAME"
+                />
+              </div>
+
+              <div className="mc-field-group">
+                <label htmlFor="mce-LNAME">Last Name </label>
+                <input
+                  type="text"
+                  value={lname}
+                  onChange={(e) => setLname(e.target.value)}
+                  name="LNAME"
+                  className=""
+                  id="mce-LNAME"
+                />
+              </div>
+
+              <div className="mc-field-group">
+                <label htmlFor="mce-MMERGE6">Zip Code </label>
+                <input
+                  type="text"
+                  value={zipcode}
+                  onChange={(e) => setZipcode(e.target.value)}
+                  name="MMERGE6"
+                  className=""
+                  id="mce-MMERGE6"
+                />
+              </div>
+
+              <div id="mce-responses" className="clear">
+                <div className="response" id="mce-error-response" style={{ display: 'none' }} />
+                <div className="response" id="mce-success-response" style={{ display: 'none' }} />
+              </div>
+              <div aria-hidden="true">
+                <div className="clear">
+                  <input
+                    type="submit"
+                    value="Subscribe"
+                    name="subscribe"
+                    id="mc-embedded-subscribe"
+                    className="button"
+                  />
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
       </Modal>
     </ParallaxProvider>
   )
