@@ -164,7 +164,6 @@ const App = () => {
 
         <div className="tag-line">
           <div className="tag-line--top">{data.data.header.taglineTop}</div>
-          {/* <div className="divider" /> */}
           <div className="tag-line--bottom">
             <strong>
               Happy Hour 5pm-7pm weekdays.
@@ -189,7 +188,7 @@ const App = () => {
               SWAMP KITCHEN
             </li>
             <li
-              onClick={() => handleScrollTo('contact', 300)}
+              onClick={() => handleScrollTo('contact', 100)}
               className={`mb-hide  typography__nav--links ${contactInView ? 'active' : 'inactive'}`}
             >
               CONTACT
