@@ -428,7 +428,7 @@ const App = () => {
         </button>
         <div id="mc_embed_signup">
           <form
-            action="https://mikkimichelle.us2.list-manage.com/subscribe/post?u=1eaf458ac88c41547a8db6977&amp;id=f26da82daa"
+            action="https://gmail.us1.list-manage.com/subscribe/post?u=f2a959dd965eb9adf78e350cc&amp;id=139f52e8cd"
             method="post"
             id="mc-embedded-subscribe-form"
             name="mc-embedded-subscribe-form"
